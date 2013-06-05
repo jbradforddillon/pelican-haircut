@@ -57,6 +57,18 @@
         <li><a href="{{ link }}" target="_blank">{{ name }}</a></li>
         {% endfor %}
       </ul>
+
+      {% if PINBOARD_TOKEN %}
+      <div id="bookmarks">
+        <h3><a href="{{ PINBOARD_URL }}">Bookmarks</a> (via Pinboard)</h3>
+        <dl>
+        {% for post in pinboard_activity %}
+          <dt><a href="{{ post.href }}">{{ post.description }}</a></dt>
+          <dd>{{ post.extended }}</dd>
+        {% endfor %}
+        </dd>
+      </div>
+      {% endif %}
     </div>
   </aside>
 
@@ -84,7 +96,7 @@
     </footer>
 
     <div id="ending_message">
-      <p>&copy Giulio Fidente. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. You can fork the theme on <a href="https://github.com/giulivo/pelican-svbhack" target="_blank">github</a>.</p>
+      <p>&copy; {{ AUTHOR }}. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme <a href="https://github.com/jbradforddillon/pelican-svbhack" target="_blank">forked</a> from <a href="https://github.com/giulivo/pelican-svbhack" target="_blank">giulivo</a>.</p>
     </div>
   </main>
 </body>
